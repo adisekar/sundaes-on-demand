@@ -1,11 +1,8 @@
-import {
-  render,
-  screen,
-  waitFor,
-} from "../../../test-utils/testing-library-utils";
+import { render, screen, waitFor } from "@testing-library/react";
 import OrderEntry from "../OrderEntry";
 import { rest } from "msw";
 import { server } from "../../../mocks/server";
+import { OrderDetailsProvider } from "../../../contexts/OrderDetails";
 // import userEvent from "@testing-library/user-event";
 
 test("handles error for scoops and toppings routes", async () => {
@@ -18,7 +15,7 @@ test("handles error for scoops and toppings routes", async () => {
     )
   );
 
-  render(<OrderEntry />);
+  render(<OrderEntry />, { wrapper: OrderDetailsProvider });
 
   // wait for both async calls to finish
   await waitFor(async () => {
