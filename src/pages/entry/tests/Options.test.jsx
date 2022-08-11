@@ -1,7 +1,7 @@
 import { render, screen } from "../../../test-utils/testing-library-utils";
 import Options from "../Options";
 
-// Use query if elements not in page, find for async and get for regular elements in DOM
+// // Use query if elements not in page, find for async and get for regular elements in DOM
 
 test("displays image for each scoop option from server", async () => {
   render(<Options optionType="scoops" />);
@@ -23,7 +23,7 @@ test("displays image for each topping option from server", async () => {
   const toppingImages = await screen.findAllByRole("img", {
     name: /topping$/i,
   });
-  expect(toppingImages).toHaveLength(3);
+  expect(toppingImages).toHaveLength(4);
 
   // confirm alt text of images
   // @ts-ignore
@@ -32,5 +32,6 @@ test("displays image for each topping option from server", async () => {
     "Cherries topping",
     "M&Ms topping",
     "Hot fudge topping",
+    "Mochi topping",
   ]);
 });
